@@ -1,0 +1,20 @@
+<div class="grid-100 tablet-grid-100 mobile-grid-100">
+    <div class="grid-100 tablet-grid-100 mobile-grid-100">
+        <p class="grid-40 tablet-grid-40 mobile-grid-40">Name</p>
+        <p class="grid-40 tablet-grid-40 mobile-grid-40">Email</p>
+        <p class="grid-20 tablet-grid-20 mobile-grid-20">feads</p>
+    </div>
+    <hr>
+<?php
+$users = Application_Model_UserRepository::getInstance()->summary();
+foreach ($users as $user): ?>
+    <div class="grid-100 tablet-grid-100 mobile-grid-100">
+        <p class="grid-40 tablet-grid-40 mobile-grid-40"><?php echo $user->getName() ?></p>
+        <p class="grid-40 tablet-grid-40 mobile-grid-40"><?php echo $user->getEmail() ?></p>
+        <p class="grid-20 tablet-grid-20 mobile-grid-20"><?php echo sizeof(Application_Model_FeadRepository::getInstance()->getFeadsForUser($user->getId())) ?></p>
+    </div>
+<?php endforeach ?>
+</div>
+<script type="text/javascript">
+    setTitle('Admin panel - Users');
+</script>

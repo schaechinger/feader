@@ -1,0 +1,35 @@
+<?php
+$title = $this->message;
+$this->headTitle()->append($title);
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+    <div class="grid-30 prefix-35 suffix-35 tablet-grid-50 tablet-prefix-25 tablet-suffix-25 mobile-grid-100 center">
+        <img src="/img/<?php echo $this->color ?>/maintenance.png" alt="Error">
+    </div>
+    <h1 class="center"><?php echo $this->code . '<br>' . $title ?></h1>
+
+    <div class="grid-100 tablet-grid-100 mobile-grid-100">
+        <?php if (isset($this->exception)): ?>
+
+        <h3>Exception information:</h3>
+        <p>
+            <b>Message:</b> <?php echo $this->exception->getMessage() ?>
+        </p>
+
+        <h3>Stack trace:</h3>
+        <pre><?php echo $this->exception->getTraceAsString() ?>
+        </pre>
+
+        <h3>Request Parameters:</h3>
+        <pre><?php echo var_export($this->request->getParams(), true) ?>
+        </pre>
+        <?php endif ?>
+    </div>
+</body>
+</html>

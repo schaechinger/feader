@@ -1,0 +1,12 @@
+<?php
+$title = $this->translate->_('user_account_data');
+$this->headTitle()->append($title);
+?>
+
+<div class="grid-30 <?php if (!$this->staticMenu): ?>prefix-35 suffix-35<?php else: ?>prefix-25 suffix-45<?php endif ?> tablet-grid-70 tablet-prefix-15 tablet-suffix-15 mobile-grid-100">
+    <?php echo $this->form ?>
+</div>
+
+<script type="text/javascript">
+    setTitle('<?php echo $this->escape($title) ?>');
+</script>

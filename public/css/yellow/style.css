@@ -1,0 +1,70 @@
+a,
+h1,
+p.link,
+.post h2,
+.features h2,
+.loading,
+.big,
+.box h2,
+.pointer,
+.about h2,
+#menuFead .folderExpander,
+#menu h2 {
+    color: #f0b400
+}
+
+a:hover,
+p.link:hover,
+.article .fead a:hover,
+.pointer:hover,
+#menu h2 a:hover,
+#menu #addFead a:hover {
+    color: #ffc400
+}
+
+ul {
+    list-style-image: url('/img/yellow/list.svg')
+}
+
+.headline,
+.rightNav li,
+.border-h,
+.box,
+.box h2,
+.sidebar,
+.ad {
+    border-color: #f0b400
+}
+
+.zend_form input,
+.zend_form textarea {
+    border-color: #aaa
+}
+
+.zend_form input:focus,
+.zend_form textarea:focus {
+    border-color: #000
+}
+
+#submit,
+input.button,
+a.button,
+#menu a:hover,
+#menuFead .element:hover,
+#menuFead .element:hover > p a.feadTitle,
+#menuFead .element:hover > p.feadTitle a,
+.filled h1 {
+    background-color: #f0b400;
+    border-color: #0f0f0f;
+    color: #fff
+}
+
+#submit, input.button, a.button {
+    color: #fff
+}
+
+#submit:hover,
+input.button:hover,
+a.button:hover {
+    background-color: #ffc400
+}

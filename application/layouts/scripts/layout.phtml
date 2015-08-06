@@ -1,0 +1,303 @@
+<?php
+$color = $this->color;
+if (null === $color) {
+    $color = 'blue';
+}
+$translate = Application_Service_Language::getInstance();
+$url = $_SERVER['REDIRECT_URL'];
+$menuStatic = intval(Application_Service_Session::getInstance()->getMenuStatic());
+if (Application_Service_Session::getInstance()->getSessionId())
+{
+    if (null === $menuStatic)
+    {
+        $menuStatic = Application_Model_UserSettingRepository::getInstance()->getSetting()->getMenuStatic();
+        Application_Service_Session::getInstance()->setMenuStatic($menuStatic);
+    }
+    $firstname = Application_Model_UserRepository::getInstance()
+                    ->get(Application_Service_Session::getInstance()
+                    ->getSessionId())->getFirstName();
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+    <meta name="author" content="Manuel Schächinger">
+    <meta name="keywords" content="feader, feed, reader, rss, atom, rdf">
+    <meta name="description" content="<?php echo $translate->_('header_description') ?>">
+    <?php echo $this->headTitle() ?>
+    <!-- favicons -->
+    <link rel="icon" href="/img/<?php echo $color ?>/icon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/img/<?php echo $color ?>/icon.ico" type="image/x-icon">
+    <!-- app icons for ios and android -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/img/<?php echo $color ?>/app-57.png">
+    <link rel="apple-touch-icon-precomposed" sizes="74x74" href="/img/<?php echo $color ?>/app-74.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/<?php echo $color ?>/app-114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/<?php echo $color ?>/app-144.png">
+    <!-- app icon for windows 8 -->
+    <meta name="application-name" content="feader">
+    <meta name="msapplication-TileImage" content="/img/<?php echo $color ?>/app-144.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <!-- styles -->
+    <link href="/css/style.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="/css/<?php echo $color ?>/style.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="/css/unsemantic.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="//code.jquery.com/ui/jquery-ui-git.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" media="screen" rel="stylesheet" type="text/css">
+    <!-- scripts -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/ui/jquery-ui-git.js"></script>
+    <script type="text/javascript" src="/js/date.js"></script>
+    <script type="text/javascript" src="/js/feader.js"></script>
+</head>
+
+<body>
+<div id="wrapper">
+<div role="main" class="grid-parent">
+<header class="grid-100 tablet-grid-100 mobile-grid-100 grid-parent headline center">
+    <div class="grid-15 tablet-grid-20 mobile-grid-10 grid-parent">
+        <div
+            class="<?php if (!$menuStatic): ?>grid-33<?php else: ?>hide-on-desktop<?php endif ?> tablet-grid-33 mobile-grid-100 grid-parent">
+            <p><span id="menuButton" class="icon-reorder pointer big grid-parent" onclick="menu()"></span></p>
+        </div>
+        <div
+            class="<?php if (!$menuStatic): ?>grid-66<?php else: ?>grid-100<?php endif ?> tablet-grid-66 hide-on-mobile logo">
+            <a href="<?php echo $this->url(['controller' => 'index'], null, true) ?>">
+                <img src="/img/<?php echo $color ?>/logo-small-icon.png" alt="feader">
+            </a>
+        </div>
+    </div>
+    <div class="grid-70 tablet-grid-60 mobile-grid-80 center">
+        <h1 id="title">&nbsp;</h1>
+    </div>
+    <div class="grid-15 tablet-grid-20 mobile-grid-10 grid-parent">
+        <?php if (!is_null(Application_Service_Session::getInstance()->getSessionId())): ?>
+            <div class="grid-33 tablet-grid-33 hide-on-mobile">&nbsp;</div>
+            <div class="grid-33 tablet-grid-33 hide-on-mobile grid-parent">
+                <p class="grid-parent"><a href="<?php echo $this->url(['controller' => 'user'], null, true) ?>"
+                                          class="icon-cog pointer big grid-parent"
+                                          title="<?php echo $translate->_('settings') ?>"></a></p>
+            </div>
+            <div class="grid-33 tablet-grid-33 mobile-grid-100 grid-parent">
+                <?php if (0 === strpos($_SERVER['REQUEST_URI'], '/home/')): ?>
+                    <p class="grid-parent"><span class="icon-ok pointer big grid-parent" onclick="readAll()"
+                                             title="<?php echo $translate->_('read_all') ?>"></span></p>
+                <?php else: ?>
+                    <p><a href="/home/fead" class="grid-parent"><span class="icon-inbox pointer big grid-parent"
+                                             title="<?php echo $firstname . "'s feads" ?>"></span></a></p>
+                <?php endif ?>
+            </div>
+        <?php else: ?>
+            <div class="grid-33 tablet-grid-33 hide-on-mobile">&nbsp;</div>
+            <div class="grid-33 tablet-grid-33 hide-on-mobile">&nbsp;</div>
+            <div class="grid-33 tablet-grid-33 mobile-grid-100 grid-parent">
+                <p><a href="/user/login" class="grid-parent"><span class="icon-signin pointer big grid-parent"
+                                             title="<?php echo $this->translate->_('login') ?>"></span></a></p>
+            </div>
+        <?php endif ?>
+    </div>
+</header>
+
+<div class="<?php if (!$menuStatic): ?>grid-25<?php else: ?>grid-20<?php endif ?>
+            suffix-75 tablet-grid-100 mobile-grid-100 sidebar scrollable<?php if (!$menuStatic): ?> hidden<?php endif ?>">
+    <div class="hide-on-desktop hide-on-tablet">
+        <div class="logo">
+            <a href="<?php echo $this->url(['controller' => 'index'], null, true) ?>">
+                <img src="/img/<?php echo $color ?>/logo-small-icon.png" alt="feader">
+            </a>
+        </div>
+    </div>
+    <div id="menu" class="tablet-grid-60 tablet-prefix-20 tablet-suffix-20 grid-parent">
+        <?php if (!is_null(Application_Service_Session::getInstance()->getSessionId())): ?>
+            <ul class="grid-100 tablet-grid-100 mobile-grid-100">
+                <li class="hide-on-desktop hide-on-tablet<?php if (0 === strpos($url, '/user')) echo ' selected' ?>">
+                    <a href="<?php echo $this->url(['controller' => 'user'], null, true) ?>">
+                        <span class="icon-cog"></span>
+                        <?php echo $translate->_('settings') ?>
+                    </a>
+                </li>
+                <li <?php if (0 === strpos($url, '/fead/import')) echo 'class="selected"' ?>">
+                <a href="<?php echo $this->url(['controller' => 'fead', 'action' => 'import'], null, true) ?>">
+                    <span class="icon-cloud"></span>
+                    <?php echo $translate->_('import_feads') ?>
+                </a>
+                </li>
+            </ul>
+            <ul>
+                <li <?php if (0 === strpos($url, '/home/favorites')) echo 'class="selected"' ?>>
+                    <a href="<?php echo $this->url(['controller' => 'home', 'action' => 'favorites'], null, true) ?>">
+                        <span class="icon-star"></span>
+                        <?php echo $translate->_('favorites') ?>
+                    </a>
+                </li>
+                <li <?php if (0 === strpos($url, '/home/unread')) echo 'class="selected"' ?>>
+                    <a href="<?php echo $this->url(['controller' => 'home', 'action' => 'unread'], null, true) ?>">
+                        <span class="icon-circle"></span>
+                        <?php echo $translate->_('unread') ?>
+                    </a>
+                </li>
+                <li id="menuFead">
+                    <a href="<?php echo $this->url(['controller' => 'home', 'action' => 'fead'], null, true) ?>"
+                        <?php if ('/home/fead' === $url) echo 'class="selected"' ?>>
+                        <span class="icon-inbox"></span>
+                        <?php $ending = ('s' === $firstname[strlen($firstname)-1]) ? '' : 's';
+                        echo $firstname . "'" . $ending . " feads" ?>
+                    </a>
+                    <ul class="grid-100 tablet-grid-100 mobile-grid-100 sortable feadList" data-folder="0">
+                        <?php
+                        $menu = new Application_Service_Menu();
+                        $menu->generate($url);
+                        ?>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" id="addFeadLabel" onclick="showAddFead()">
+                        <span class="icon-plus"></span>
+                        <?php echo $translate->_('add_fead') ?>
+                    </a>
+                </li>
+                <li <?php if ('/fead/manage' === $url) echo 'class="selected"' ?>>
+                    <a href="<?php echo $this->url(['controller' => 'fead', 'action' => 'manage']) ?>">
+                        <span class="icon-wrench"></span>
+                        <?php echo $translate->_('manage_feads') ?>
+                    </a>
+                </li>
+            </ul>
+        <?php else: ?>
+            <ul>
+                <li>
+                    <a href="<?php echo $this->url(['controller' => 'user', 'action' => 'login']) ?>">
+                        <span class="icon-signin"></span>
+                        <?php echo $translate->_('login') ?>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo $this->url(['controller' => 'user', 'action' => 'signup']) ?>">
+                        <?php echo $translate->_('signup') ?>
+                    </a>
+                </li>
+            </ul>
+        <?php endif ?>
+        <ul>
+            <li <?php if ('/blog' === $url) echo 'class="selected"' ?>>
+                <a href="<?php echo $this->url(['controller' => 'blog'], null, true) ?>">
+                    <?php echo $translate->_('blog') ?>
+                </a>
+            </li>
+            <?php if (!is_null(Application_Service_Session::getInstance()->getSessionId())): ?>
+                <li <?php if ('/index/feadback' === $url) echo 'class="selected"' ?>>
+                    <a href="<?php echo $this->url(['controller' => 'index', 'action' => 'feadback'], null, true) ?>">
+                        <?php echo $translate->_('feadback') ?>
+                    </a>
+                </li>
+            <?php endif ?>
+        </ul>
+        <?php if (!is_null(Application_Service_Session::getInstance()->getSessionId())): ?>
+            <p><?php echo Application_Model_UserRepository::getInstance()
+                    ->get(Application_Service_Session::getInstance()
+                        ->getSessionId())->getName() ?>
+                -
+                <a href="<?php echo $this->url(['controller' => 'user', 'action' => 'logout']) ?>">
+                    <span class="icon-signout"></span>
+                    <?php echo $translate->_('logout') ?>
+                </a>
+            </p>
+        <?php endif ?>
+    </div>
+
+    <div class="tablet-grid-60 tablet-prefix-20 tablet-suffix-20 grid-parent menuFooter">
+        <hr>
+        <a href="http://www.facebook.com/usefeader" target="_blank" title="facebook" class="icon-stack">
+            <span class="icon-check-empty icon-stack-base"></span>
+            <span class="icon-facebook"></span>
+        </a>
+        &nbsp;
+        <a href="http://www.twitter.com/usefeader" target="_blank" title="twitter" class="icon-stack">
+            <span class="icon-check-empty icon-stack-base"></span>
+            <span class="icon-twitter"></span>
+        </a>
+        <p class="footer">
+            <a href="<?php echo $this->url(['controller' => 'about', 'action' => 'imprint']) ?>">
+                <?php echo $translate->_('imprint') ?>
+            </a>
+            <a href="<?php echo $this->url(['controller' => 'about', 'action' => 'dataprivacy']) ?>">
+                <?php echo $translate->_('data_privacy') ?>
+            </a>
+            <br>
+            &copy; <?php echo date('Y') ?> feader - <?php echo $translate->_('all_rights_reserved') ?>
+        </p>
+    </div>
+</div>
+<?php if ($menuStatic): ?>
+    <div class="grid-20 hide-on-tablet hide-on-mobile">&nbsp;</div>
+<?php endif ?>
+<div id="container"
+     class="<?php if (!$menuStatic): ?>grid-100<?php else: ?>grid-80<?php endif ?> tablet-grid-100 mobile-grid-100">
+    <div id="content">
+        <?php echo $this->layout()->content ?>
+    </div>
+</div>
+<div class="clearfix"></div>
+</div>
+</div>
+
+<script type="text/javascript">
+    <?php if (!$menuStatic): ?>
+    $('.scrollable').mouseleave(function () {
+        //$('.scrollable').addClass('hidden');
+    });
+    <?php endif ?>
+    $('#menuButton').mouseenter(function () {
+        //menu(true)
+    });
+    <?php if ($menuStatic): ?>
+    $(document).ready(function () {
+        loadStaticMenu();
+        if (1024 >= document.width) {
+            $('.scrollable').addClass('hidden');
+        }
+    });
+    $(window).resize(function () {
+        if (true || 024 < document.width) {
+            if ($('.sidebar').hasClass('hidden')) {
+                $('.sidebar').removeClass('hidden');
+            }
+        }
+    });
+    <?php endif ?>
+
+    settings('<?php echo Application_Service_Language::getInstance()->getAdapter()->getLocale() ?>', '<?php echo $color ?>');
+
+    var _paq = _paq || [];
+    _paq.push(["trackPageView"]);
+    _paq.push(["enableLinkTracking"]);
+
+    <?php
+    $siteId = 2;
+    if ('feader.eu' === $_SERVER['HTTP_HOST'] || 'www.feader.eu' === $_SERVER['HTTP_HOST'])
+    {
+        $siteId = 1;
+    }
+    else if (0 === strpos($_SERVER['REQUEST_URI'], '/share/'))
+    {
+        $siteId = 3;
+    }
+    ?>
+
+    $(function () {
+        var u = "https://www.feader.eu/feadlytics/";
+        _paq.push(["setTrackerUrl", u + "piwik.php"]);
+        _paq.push(["setSiteId", "<?php echo $siteId ?>"]);
+        var d = document, g = d.createElement("script"), s = d.getElementsByTagName("script")[0];
+        g.type = "text/javascript";
+        g.defer = true;
+        g.async = true;
+        g.src = u + "piwik.js";
+        s.parentNode.insertBefore(g, s);
+    });
+</script>
+<noscript><p><img src="https://www.feader.eu/feadlytics/piwik.php?idsite=<?php echo $siteId ?>" style="border:0" alt="" /></p></noscript>
+
+</body>
+</html>

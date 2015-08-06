@@ -1,0 +1,39 @@
+<?php
+$title = $this->translate->_('imprint');
+$this->headTitle()->append($title);
+?>
+
+<div class="grid-container">
+    <h1><?php echo $title ?></h1>
+    <div class="gird-80 prefix-10 suffix-10 tablet-grid-100 mobile-grid-100 block about">
+        <?php if ('de' !== $this->translate->getAdapter()->getLocale()): ?>
+            <h3><?php echo $this->translate->_('about_translate_note_label') ?></h3>
+            <p><?php echo $this->translate->_('about_translate_note') ?></p>
+        <?php endif ?>
+
+        <h2><?php echo $this->translate->_('imprint_owner_label') ?></h2>
+        <p><?php echo $this->translate->_('imprint_owner') ?></p>
+        <p><?php echo $this->translate->_('imprint_owner_contact') ?></p>
+
+        <h2><?php echo $this->translate->_('imprint_law_label') ?></h2>
+        <p><?php echo $this->translate->_('imprint_law') ?></p>
+
+        <h2><?php echo $this->translate->_('imprint_copyright_label') ?></h2>
+        <p><?php echo $this->translate->_('imprint_copyright') ?></p>
+
+        <h2><?php echo $this->translate->_('imprint_further_label') ?></h2>
+        <p>
+            <a href="/about/terms"><?php echo $this->translate->_('terms') ?></a><br>
+            <a href="/about/dataprivacy"><?php echo $this->translate->_('data_privacy') ?></a>
+        </p>
+
+        <h2><?php echo $this->translate->_('imprint_use_label') ?></h2>
+        <p>
+            Font Awesome <?php echo $this->translate->_('by') ?> Dave Gandy - <a href="http://fontawesome.io" target="_blank">fontawesome.io</a><br>
+            date.js <?php echo $this->translate->_('by') ?> Coolite Inc. - <a href="http://datejs.com" target="_blank">datejs.com</a><br>
+            jQuery <?php echo $this->translate->_('by') ?> jQuery Foundation. - <a href="http://jquery.com" target="_blank">jquery.com</a><br>
+            Unsemantic <?php echo $this->translate->_('by') ?> Nathan Smith - <a href="http://unsemantic.com" target="_blank">unsemantic.com</a><br>
+            Kite One <?php echo $this->translate->_('by') ?> <a href="https://profiles.google.com/102227856512675210123/about" target="_blank">Eduardo Tunni</a>
+        </p>
+    </div>
+</div>

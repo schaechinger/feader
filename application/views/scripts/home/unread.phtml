@@ -1,0 +1,16 @@
+<?php
+$title = $this->translate->_('unread');
+$this->headTitle()->append($title);
+?>
+<div id="articles">
+    <div id="load" class="center"><img src="/img/<?php echo $this->color ?>/icon.png" id="loading"></div>
+</div>
+<div id="emptyList" class="hidden center">
+    <p><span class="icon-info big"></span><?php echo $this->translate->_('unread_empty') ?></p>
+</div>
+
+<script type="text/javascript">
+    setTitle('<?php echo $this->escape($title) ?>');
+    $(document).scroll(function() { loadArticles('unread', false) });
+    $(document).ready(function() { loadArticles('unread', true) });
+</script>

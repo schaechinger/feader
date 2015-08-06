@@ -1,0 +1,9 @@
+<a onclick="favorite(<?php echo $this->article->getArticleId() ?>)" class="button pointer">
+    <?php if ($this->article->isFavorite()): ?>
+        <span class="icon-star"></span>
+        <p class="hide-on-mobile"><?php echo $this->translate->_('detail_favorite_yes') ?></p>
+    <?php else: ?>
+        <span class="icon-star-empty"></span>
+        <p class="hide-on-mobile"><?php echo $this->translate->_('detail_favorite_no') ?></p>
+    <?php endif ?>
+</a>

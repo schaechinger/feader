@@ -1,0 +1,26 @@
+<?php
+$title = 'Blog';
+$this->headTitle()->append($title);
+?>
+
+<div class="grid-container">
+    <h1><?php echo $title ?></h1>
+    <?php foreach ($this->posts as $post): ?>
+        <div class="gird-60 prefix-20 suffix-20 tablet-grid-60 tablet-prefix-20 tablet-suffix-20 mobile-grid-100 block post">
+            <h2><?php echo $post->getTitle() ?></h2>
+            <p class="head">From
+                <?php echo Application_Model_UserRepository::getInstance()
+                    ->get($post->getUserId())->getName() ?> -
+                <?php echo substr($post->getDate(), 0, 10) ?></p>
+            <p class="content"><?php echo $post->getContent() ?></p>
+            <?php /*
+            <div class="tags">
+                <?php $tags = explode(',', $post->getTags());
+                    foreach($tags as $tag): ?>
+                        <a href="#<?php echo $tag ?>" class="tag">#<?php echo $tag ?></a>
+                <?php endforeach ?>
+            </div>
+            */ ?>
+        </div>
+<?php endforeach ?>
+</div>

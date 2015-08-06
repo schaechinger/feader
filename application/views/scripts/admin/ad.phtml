@@ -1,0 +1,18 @@
+<?php
+$title = 'Admin - Advertisement';
+$this->headTitle()->append($title);
+?>
+
+<?php foreach ($this->ads as $ad): ?>
+<div class="grid-100 tablet-grid-100 mobile-grid-100">
+    <p class="grid-40 tablet-grid-40 mobile-grid-40"><?php echo $ad->getTitle() ?></p>
+    <div class="ad"><?php echo $ad->getCode() ?></div>
+</div>
+<div class="clearfix"></div>
+<?php endforeach ?>
+
+<a href="/advertisement/add" class="button">Add</a>
+
+<script type="text/javascript">
+    setTitle('<?php echo $this->escape($title) ?>');
+</script>

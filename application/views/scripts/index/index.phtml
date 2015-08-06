@@ -1,0 +1,191 @@
+<?php
+$this->headTitle()->append('read your feads');
+$color = Application_Service_Session::getInstance()->getColor();
+if (null === $color) {
+    $color = 'blue';
+}
+?>
+
+<div class="grid-100 tablet-grid-100 mobile-grid-100 grid-parent">
+    <div class="beta">
+        <img src="/img/<?php echo $color ?>/beta.png" alt="beta">
+    </div>
+    <div class="filled">
+        <div id="slideshow" data-speed="8000">
+            <div id="slide1" class="slide">
+                <a href="http://fead.co/p2FaEk" target="_blank">
+                    <img src="/img/slides/slide2.png" class="full">
+                </a>
+            </div>
+            <div id="slide2" class="slide">
+                <img src="/img/slides/slide3.png" class="full">
+            </div>
+            <div id="slide3" class="slide">
+                <a href="http://fead.co/kwExAC" target="_blank">
+                    <img src="/img/slides/slide4.png" class="full">
+                </a>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<div class="grid-container features">
+    <div class="main">
+        <h1 class="center"><?php echo $this->translate->_('features_title') ?></h1>
+
+        <div class="grid-33 push-33 tablet-grid-33 tablet-push-33 mobile-grid-100">
+            <div
+                class="grid-80 prefix-10 suffix-10 tablet-grid-80 tablet-prefix-10 tablet-suffix-10 mobile-grid-80 mobile-prefix-10 mobile-suffix-10">
+                <div class="grid-parent center">
+                    <img src="/img/alldevices.png"
+                         alt="<?php echo $this->translate->_('features_alldevices_title') ?>">
+                </div>
+                <h2><?php echo $this->translate->_('features_alldevices_title') ?></h2>
+
+                <p><?php echo $this->translate->_('features_alldevices') ?></p>
+            </div>
+        </div>
+        <div class="grid-33 pull-33 tablet-grid-33 tablet-pull-33 mobile-grid-100 mobile-push-100">
+            <div
+                class="grid-80 prefix-10 suffix-10 tablet-grid-80 tablet-prefix-10 tablet-suffix-10 mobile-grid-80 mobile-prefix-10 mobile-suffix-10">
+                <div class="grid-parent center">
+                    <img src="/img/oneplace.png"
+                         alt="<?php echo $this->translate->_('features_oneplace_title') ?>">
+                </div>
+                <h2><?php echo $this->translate->_('features_oneplace_title') ?></h2>
+
+                <p><?php echo $this->translate->_('features_oneplace') ?></p>
+            </div>
+        </div>
+        <div class="grid-33 tablet-grid-33 mobile-grid-100">
+            <div
+                class="grid-80 prefix-10 suffix-10 tablet-grid-80 tablet-prefix-10 tablet-suffix-10 mobile-grid-80 mobile-prefix-10 mobile-suffix-10">
+                <div class="grid-parent center">
+                    <img src="/img/protected.png"
+                         alt="<?php echo $this->translate->_('features_protected_title') ?>">
+                </div>
+                <h2><?php echo $this->translate->_('features_protected_title') ?></h2>
+
+                <p><?php echo $this->translate->_('features_protected') ?></p>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div>
+        <div class="grid-33 tablet-grid-33 mobile-grid-100">
+            <div class="grid-90 prefix-5 suffix-5 tablet-grid-90 tablet-prefix-5 tablet-suffix-5 mobile-grid-100">
+                <h2><span class="icon-cog"></span><?php echo $this->translate->_('features_adjusted_title') ?></h2>
+                <ul>
+                    <li><?php echo $this->translate->_('features_reorder_point') ?></li>
+                    <li><?php echo $this->translate->_('features_folders_point') ?></li>
+                    <li><?php echo $this->translate->_('features_rename_point') ?></li>
+                </ul>
+            </div>
+        </div>
+        <div class="grid-33 tablet-grid-33 mobile-grid-100">
+            <div class="grid-90 prefix-5 suffix-5 tablet-grid-90 tablet-prefix-5 tablet-suffix-5 mobile-grid-100">
+                <h2><span class="icon-tags"></span><?php echo $this->translate->_('features_tagged_title') ?></h2>
+                <ul>
+                    <li><?php echo $this->translate->_('features_articles_point') ?></li>
+                    <li><?php echo $this->translate->_('feads') ?></li>
+                    <li><?php echo $this->translate->_('features_group_point') ?></li>
+                    <li><?php echo $this->translate->_('features_search_point') ?></li>
+                </ul>
+            </div>
+        </div>
+        <div class="grid-33 tablet-grid-33 mobile-grid-100">
+            <div class="grid-90 prefix-5 suffix-5 tablet-grid-90 tablet-prefix-5 tablet-suffix-5 mobile-grid-100">
+                <h2><span class="icon-user"></span><?php echo $this->translate->_('features_personally_title') ?></h2>
+                <ul>
+                    <li><?php echo $this->translate->_('features_designs_point') ?></li>
+                    <li><?php echo $this->translate->_('features_styles_point') ?></li>
+                    <li><?php echo $this->translate->_('features_sunset_point') ?></li>
+                </ul>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+    <div>
+        <div class="grid-33 tablet-grid-33 mobile-grid-100">
+            <div class="grid-90 prefix-5 suffix-5 tablet-grid-90 tablet-prefix-5 tablet-suffix-5 mobile-grid-100">
+                <h2><span class="icon-share-alt"></span><?php echo $this->translate->_('features_shortlinks_title') ?>
+                </h2>
+                <ul>
+                    <li><?php echo $this->translate->_('features_share_point') ?></li>
+                    <li><?php echo $this->translate->_('features_secure_point') ?></li>
+                    <li><?php echo $this->translate->_('features_short_point') ?></li>
+                </ul>
+            </div>
+        </div>
+        <div class="grid-33 tablet-grid-33 mobile-grid-100">
+            <div class="grid-90 prefix-5 suffix-5 tablet-grid-90 tablet-prefix-5 tablet-suffix-5 mobile-grid-100">
+                <h2><span class="icon-beaker"></span><?php echo $this->translate->_('features_beta_title') ?></h2>
+                <ul>
+                    <li><?php echo $this->translate->_('features_participate_point') ?></li>
+                    <li><?php echo $this->translate->_('features_feadback_point') ?></li>
+                    <li><?php echo $this->translate->_('features_suggest_point') ?></li>
+                </ul>
+            </div>
+        </div>
+        <div class="grid-33 tablet-grid-33 mobile-grid-100">
+            <div class="grid-90 prefix-5 suffix-5 tablet-grid-90 tablet-prefix-5 tablet-suffix-5 mobile-grid-100">
+                <h2><span class="icon-road"></span><?php echo $this->translate->_('features_upcoming') ?></h2>
+                <ul>
+                    <li><?php echo $this->translate->_('features_api_title') ?></li>
+                    <li><a href="http://getpocket.com"
+                           target="_blank"><?php echo $this->translate->_('features_pocket_title') ?></a></li>
+                    <li><a href="http://evernote.com"
+                           target="_blank"><?php echo $this->translate->_('features_evernote_title') ?></a></li>
+                    <li><?php echo $this->translate->_('features_search_point') ?></li>
+                    <li><?php echo $this->translate->_('features_categories_title') ?></li>
+                    <li><?php echo $this->translate->_('features_filter_title') ?></li>
+                    <li><?php echo $this->translate->_('features_your_feature_title') ?></li>
+                </ul>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <br>
+
+    <p class="center">
+        <?php echo $this->translate->_('start_using') ?>
+        <br>
+        <br>
+        <a href="/user/signup" class="button bigger"><?php echo $this->translate->_('signup_now') ?></a>
+    </p>
+</div>
+
+<script type="text/javascript">
+    var slideId = 0;
+    var slides = 0;
+    var hover = false;
+
+    function slideshow() {
+        var element = $('#slideshow');
+        if (!hover) {
+            if (0 === slides) {
+                slides = element.children().length;
+            }
+            else {
+                if (0 === slideId) {
+                    $('#slide' + slides).slideToggle();
+                }
+                else {
+                    $('#slide' + slideId).slideToggle();
+                }
+            }
+
+            slideId++;
+            $('#slide' + slideId).slideToggle();
+
+            if (slideId === slides) {
+                slideId = 0;
+            }
+        }
+        window.setTimeout(slideshow, element.data('speed'));
+    }
+
+    slideshow();
+</script>

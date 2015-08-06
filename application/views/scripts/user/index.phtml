@@ -1,0 +1,97 @@
+<?php
+$title = $this->translate->_('settings');
+$this->headTitle()->append($title);
+?>
+
+<div class="grid-33 tablet-grid-50 mobile-grid-100">
+    <div class="box">
+        <h2><?php echo $this->translate->_('user_account') ?></h2>
+        <div class="clear"></div>
+        <p><?php echo Application_Model_UserRepository::getInstance()
+                        ->get(Application_Service_Session::getInstance()->getSessionId())
+                        ->getName() ?><br>
+        <?php echo Application_Model_UserRepository::getInstance()
+                        ->get(Application_Service_Session::getInstance()->getSessionId())
+                        ->getEmail() ?></p>
+        <a href="<?php echo $this->url(['controller' => 'user', 'action' => 'edit']) ?>">
+            <span class="icon-user"></span>
+            <?php echo $this->translate->_('user_account_data') ?>
+        </a><br>
+        <a href="<?php echo $this->url(['controller' => 'fead', 'action' => 'import'], null, true) ?>">
+            <span class="icon-cloud"></span>
+            <?php echo $this->translate->_('import_feads') ?>
+        </a><br>
+    </div>
+</div>
+
+<div class="grid-33 tablet-grid-50 mobile-grid-100">
+    <div class="box">
+        <h2><?php echo $this->translate->_('user_appearance') ?></h2>
+        <div class="clear"></div>
+        <h3><?php echo $this->translate->_('user_design') ?></h3>
+        <div class="horList">
+            <div class="pointer" onclick="setDesign('red')">
+                <img src="/img/red/list.svg" alt="red" class="grow">
+            </div>
+            <div class="pointer" onclick="setDesign('green')">
+                <img src="/img/green/list.svg" alt="green" class="grow">
+            </div>
+            <div class="pointer" onclick="setDesign('yellow')">
+                <img src="/img/yellow/list.svg" alt="yellow" class="grow">
+            </div>
+            <div class="pointer" onclick="setDesign('blue')">
+                <img src="/img/blue/list.svg" alt="blue" class="grow">
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <h3><?php echo $this->translate->_('user_menu') ?></h3>
+        <br>
+        <?php
+        $menu = Application_Service_Session::getInstance()->getMenuStatic();
+        $language = Application_Service_Session::getInstance()->getLanguage();
+        ?>
+        <span class="segment">
+            <a href="#" <?php if ('1' === $menu): ?> class="button"<?php endif ?>
+               onclick="setMenuStatic(1)"><?php echo $this->translate->_('user_menu_static') ?></a>
+            <a href="#" <?php if ('0' === $menu): ?> class="button"<?php endif ?>
+               onclick="setMenuStatic(0)"><?php echo $this->translate->_('user_menu_dynamically') ?></a>
+        </span>
+        <div class="clearfix"></div>
+        <br>
+        <?php /*
+        <h3><?php echo $this->translate->_('user_sunset') ?></h3>
+        */ ?>
+        <h3><?php echo $this->translate->_('user_language') ?></h3>
+        <br>
+        <span class="segment">
+            <a href="#" <?php if ('de' === $language): ?> class="button"<?php endif ?>
+               onclick="setLanguage('de')">deutsch</a>
+            <a href="#" <?php if ('en' === $language): ?> class="button"<?php endif ?>
+               onclick="setLanguage('en')">english</a>
+        </span>
+        <div class="clearfix"></div>
+        <br>
+    </div>
+</div>
+
+<div class="grid-33 tablet-grid-50 mobile-grid-100">
+    <div class="box">
+        <h2><a name="invite"><?php echo $this->translate->_('invite_title') ?></a></h2>
+        <div class="clear"></div>
+        <?php if (!$this->success):
+            echo $this->form;
+        else:
+            echo $this->translate->_('invite_sent');
+        endif;
+        ?>
+    </div>
+    <br>
+</div>
+
+<script type="text/javascript">
+    setTitle('<?php echo $this->escape($title) ?>');
+    <?php if ($this->post): ?>
+        $(document).scrollTop(document.height);
+    <?php endif ?>
+</script>

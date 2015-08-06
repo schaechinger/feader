@@ -1,0 +1,34 @@
+<?php
+$title = $this->translate->_('data_privacy');
+$this->headTitle()->append($title);
+?>
+
+<div class="grid-container">
+    <h1><?php echo $title ?></h1>
+    <div class="gird-80 prefix-10 suffix-10 tablet-grid-100 mobile-grid-100 block about">
+        <?php if ('de' !== $this->translate->getAdapter()->getLocale()): ?>
+            <h3><?php echo $this->translate->_('about_translate_note_label') ?></h3>
+            <p><?php echo $this->translate->_('about_translate_note') ?></p>
+        <?php endif ?>
+
+        <h2><?php echo $this->translate->_('data_privacy_user_label') ?></h2>
+        <p><?php echo $this->translate->_('data_privacy_user') ?></p>
+
+        <h2><?php echo $this->translate->_('data_privacy_ad_label') ?></h2>
+        <p><?php echo $this->translate->_('data_privacy_ad') ?></p>
+
+        <h2><?php echo $this->translate->_('data_privacy_cookies_label') ?></h2>
+        <p><?php echo $this->translate->_('data_privacy_cookies') ?></p>
+
+        <h2><?php echo $this->translate->_('data_privacy_update_label') ?></h2>
+        <p><?php echo $this->translate->_('data_privacy_update') ?></p>
+
+        <br>
+        <p class="full footer">
+            <?php $admin = Application_Model_AdminRepository::getInstance(); ?>
+            Version <?php echo $admin->get('privacyVersion') ?>
+            <?php echo $this->translate->_('valid_from') ?>
+            <?php echo $admin->get('privacyDate') ?>
+        </p>
+    </div>
+</div>

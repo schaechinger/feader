@@ -1,0 +1,17 @@
+<div class="grid-30 <?php if (!$this->staticMenu): ?>prefix-35 suffix-35<?php else: ?>prefix-25 suffix-45<?php endif ?>5 tablet-grid-50 tablet-prefix-25 tablet-suffix-25 mobile-grid-100 big huge">
+    <span class="icon-coffee"></span>
+</div>
+
+<div class="clearfix"></div>
+
+<ul>
+<?php
+$ranking = Application_Model_UserFeadRepository::getInstance()->clickRanking();
+foreach ($ranking as $fead): ?>
+<li><?php echo $fead['title'] . ' (' . $fead['clicks'] . ' clicks)' ?></li>
+<?php endforeach ?>
+</ul>
+
+<script type="text/javascript">
+    setTitle('Home');
+</script>

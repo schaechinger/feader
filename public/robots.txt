@@ -1,0 +1,6 @@
+#############
+# feader.eu #
+#############
+
+User-agent: *
+Disallow: /cron

@@ -1,0 +1,12 @@
+<?php
+$title = $this->translate->_('rename_folder');
+$this->headTitle()->append($title);
+?>
+
+<div class="grid-30 <?php if (!$this->staticMenu): ?>prefix-35 suffix-35<?php else: ?>prefix-25 suffix-45<?php endif ?>5 tablet-grid-50 tablet-prefix-25 tablet-suffix-25 mobile-grid-100">
+    <?php echo $this->form ?>
+</div>
+
+<script type="text/javascript">
+    setTitle('<?php echo $this->escape($title) ?>');
+</script>

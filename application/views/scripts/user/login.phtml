@@ -1,0 +1,16 @@
+<?php
+$title = $this->translate->_('login');
+$this->headTitle()->append($title);
+?>
+
+<div class="grid-container">
+    <div class="grid-40 prefix-30 suffix-30 tablet-grid-40 tablet-prefix-30 tablet-suffix-30 mobile-grid-100">
+        <h1 class="center"><?php echo $this->translate->_('login') ?></h1>
+        <?php echo $this->form ?>
+        <div class="center">
+            <a href="<?php echo $this->url(['controller' => 'user', 'action' => 'signup']) ?>">
+                <?php echo $this->translate->_('no_account') . ' - ' . $this->translate->_('signup_now') ?>
+            </a>
+        </div>
+    </div>
+</div>

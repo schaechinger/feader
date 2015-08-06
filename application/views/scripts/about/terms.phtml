@@ -1,0 +1,69 @@
+<?php
+$title = $this->translate->_('terms');
+$this->headTitle()->append($title)
+?>
+
+<div class="grid-container">
+    <h1><?php echo $title ?></h1>
+    <div class="gird-80 prefix-10 suffix-10 tablet-grid-100 mobile-grid-100 block about">
+        <?php if ('de' !== $this->translate->getAdapter()->getLocale()): ?>
+            <h3><?php echo $this->translate->_('about_translate_note_label') ?></h3>
+            <p><?php echo $this->translate->_('about_translate_note') ?></p>
+        <?php endif ?>
+
+        <h2><?php echo $this->translate->_('terms_privacy_label') ?></h2>
+        <p><?php echo $this->translate->_('terms_privacy') ?></p>
+
+        <h2><?php echo $this->translate->_('terms_user_label') ?></h2>
+        <h3><?php echo $this->translate->_('terms_user_register_label') ?></h3>
+        <p><?php echo $this->translate->_('terms_user_register') ?></p>
+        <h3><?php echo $this->translate->_('terms_user_forgot_label') ?></h3>
+        <p><?php echo $this->translate->_('terms_user_forgot') ?></p>
+
+        <h2>feads</h2>
+        <h3><?php echo $this->translate->_('terms_feads_add_label') ?></h3>
+        <p><?php echo $this->translate->_('terms_feads_add') ?></p>
+        <h3><?php echo $this->translate->_('terms_feads_law_label') ?></h3>
+        <p><?php echo $this->translate->_('terms_feads_law') ?></p>
+
+        <h2><?php echo $this->translate->_('terms_inform_label') ?></h2>
+        <h3><?php echo $this->translate->_('terms_inform_news_label') ?></h3>
+        <p><?php echo $this->translate->_('terms_inform_news') ?></p>
+        <h3><?php echo $this->translate->_('terms_inform_article_label') ?></h3>
+        <p><?php echo $this->translate->_('terms_inform_article') ?></p>
+        <h3><?php echo $this->translate->_('terms_inform_data_label') ?></h3>
+        <p><?php echo $this->translate->_('terms_inform_data') ?></p>
+        <h3><?php echo $this->translate->_('terms_inform_location_label') ?></h3>
+        <p><?php echo $this->translate->_('terms_inform_location') ?></p>
+        <h3><?php echo $this->translate->_('terms_inform_forgot_label') ?></h3>
+        <p><?php echo $this->translate->_('terms_inform_forgot') ?></p>
+
+        <h2><?php echo $this->translate->_('terms_ad_label') ?></h2>
+        <h3><?php echo $this->translate->_('terms_ad_data_label') ?></h3>
+        <p><?php echo $this->translate->_('terms_ad_data') ?></p>
+        <h3><?php echo $this->translate->_('terms_ad_content_label') ?></h3>
+        <p><?php echo $this->translate->_('terms_ad_content') ?></p>
+        <h3><?php echo $this->translate->_('terms_ad_appearance_label') ?></h3>
+        <p><?php echo $this->translate->_('terms_ad_appearance') ?></p>
+
+        <h2><?php echo $this->translate->_('terms_post_label') ?></h2>
+        <h3><?php echo $this->translate->_('terms_post_data_label') ?></h3>
+        <p><?php echo $this->translate->_('terms_post_data') ?></p>
+        <h3><?php echo $this->translate->_('terms_post_guest_label') ?></h3>
+        <p><?php echo $this->translate->_('terms_post_guest') ?></p>
+
+        <h2><?php echo $this->translate->_('terms_block_label') ?></h2>
+        <p><?php echo $this->translate->_('terms_block') ?></p>
+
+        <h2><?php echo $this->translate->_('terms_update_label') ?></h2>
+        <p><?php echo $this->translate->_('terms_update') ?></p>
+
+        <br>
+        <p class="full footer">
+            <?php $admin = Application_Model_AdminRepository::getInstance(); ?>
+            Version <?php echo $admin->get('termsVersion') ?>
+            <?php echo $this->translate->_('valid_from') ?>
+            <?php echo $admin->get('termsDate') ?>
+        </p>
+    </div>
+</div>

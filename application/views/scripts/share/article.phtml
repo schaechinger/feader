@@ -1,0 +1,68 @@
+<?php
+$title = $this->translate->_('share');
+$this->headTitle()->append($title);
+?>
+
+<div class="article">
+    <div class="content share">
+        <div
+            class="grid-70 prefix-15 suffix-15 tablet-grid-70 tablet-prefix-15 tablet-suffix-15 mobile-grid-100 grid-parent block show">
+            <?php if (!is_null($this->article)): ?>
+                <h2>
+                    <a href="<?php echo $this->article->getUrl() ?>" target="_blank">
+                        <?php echo $this->article->getTitle() ?>
+                    </a>
+                </h2>
+                <p>
+                    <?php echo $this->fead->getTitle() ?> - <span class="icon-time"></span><span
+                        class="detailTime"></span>
+                </p>
+
+                <?php $id = Application_Service_Session::getInstance()->getSessionId(); ?>
+                <div id="detail">
+                    <?php echo $this->article->getContent() ?>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="border-end"></div>
+                <div class="meta">
+                    <div class="link">
+                        <a href="<?php echo $this->article->getUrl() ?>" target="_blank" class="button">
+                            <span class="icon-external-link"></span>
+                            <p class="hide-on-mobile"><?php echo $this->translate->_('detail_link') ?></p>
+                        </a>
+                    </div>
+                    <div class="send">
+                        <a onclick="sendShortMail(<?php echo $this->article->getId() ?>)"  class="button pointer">
+                            <span class="icon-envelope-alt"></span>
+                            <p class="hide-on-mobile"><?php echo $this->translate->_('share_email') ?></p>
+                        </a>
+                    </div>
+                    <div class="short">
+                        <a onclick="generateShortUrl(<?php echo $this->article->getId() ?>)" class="button pointer">
+                            <span class="icon-share-alt"></span>
+                            <p class="hide-on-mobile"><?php echo $this->translate->_('share_short') ?></p>
+                        </a>
+                    </div>
+                </div>
+
+            <?php
+            $date = new Zend_Date($this->article->getDate());
+            $date->addHour(-intval($date->get(Zend_Date::GMT_DIFF)) / 100);
+            ?>
+
+                <script type="text/javascript">
+                    setTitle('<?php echo $title ?>');
+                    $('#detail a').attr('target', '_blank');
+                    var time = new Date(Math.floor((<?php echo $date->get(Zend_Date::TIMESTAMP) ?> +new Date().getUTCOffset() * 36) * 1000));
+                    var date = longDate(time);
+                    $('.detailTime').html(date);
+                </script>
+            <?php else: ?>
+                <div id="emptyList" class="center">
+                    <p><span class="icon-info big"></span><?php echo $this->translate->_('share_error') ?></p>
+                </div>
+            <?php endif ?>
+        </div>
+    </div>
+</div>

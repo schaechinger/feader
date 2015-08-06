@@ -1,0 +1,14 @@
+<?php
+$title = $this->translate->_('webimporter_title');
+$this->headTitle($title);
+?>
+
+<div class="center">
+    <h1><?php echo $title ?></h1>
+    <br>
+    <a onclick="alert('<?php echo $this->translate->_('webimporter_alert') ?>'); return false;"
+       href="javascript:document.getElementsByTagName('body')[0].appendChild(document.createElement('script')).setAttribute('src','https://www.feader.eu/js/feaderweb.min.js?r='+Math.random());"
+       title="feader web importer" id="webimporter" class="button">
+        <?php echo $this->translate->_('webimporter_text') ?>
+    </a>
+</div>

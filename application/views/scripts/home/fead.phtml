@@ -1,0 +1,46 @@
+
+<?php
+$fId = 0;
+$folderId = 0;
+if ($this->feadTitle):
+    $title = $this->feadTitle;
+    $fId = $this->feadId;
+elseif ($this->folderTitle):
+    $folderId = $this->folder;
+    $title = $this->folderTitle;
+else:
+    $fId = 0;
+    $title = Application_Model_UserRepository::getInstance()
+            ->get(Application_Service_Session::getInstance()
+                ->getSessionId())->getFirstName() . "'s " .
+        $this->translate->_('feads');
+endif;
+$this->headTitle()->append($title);
+?>
+
+<div id="articles">
+    <div id="load" class="center"><img src="/img/<?php echo $this->color ?>/icon.png" id="loading"></div>
+</div>
+<div id="emptyList" class="hidden center">
+    <?php if ($this->feadTitle): ?>
+        <p><span class="icon-info big"></span><?php echo $this->translate->_('fead_empty') ?></p>
+    <?php else: ?>
+        <p><span class="icon-info big"></span><?php echo $this->translate->_('feads_empty') ?></p>
+    <?php endif ?>
+</div>
+
+<?php
+$title = str_replace("'", "\\'", $title);
+$title = trim($title);
+?>
+
+<script type="text/javascript">
+    setTitle('<?php echo $title ?>');
+    setFeadId(<?php echo $fId ?>);
+    setFolder(<?php echo $folderId ?>);
+    $(document).scroll(function() { loadArticles(null, false) });
+    $(document).ready(function() {
+        loadArticles(null, true);
+        updateArticles();
+    });
+</script>

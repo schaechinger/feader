@@ -1,0 +1,23 @@
+<?php
+$title = $this->translate->_('signup');
+$this->headTitle()->append($title);
+?>
+
+<div class="grid-container">
+    <div class="grid-40 prefix-30 suffix-30 tablet-grid-40 tablet-prefix-30 tablet-suffix-30 mobile-grid-100">
+        <h1 class="center"><?php echo $title ?></h1>
+        <?php if (!$this->loggedin):
+            echo $this->form;
+        else: ?>
+            <p class="center"><?php echo $this->translate->_('signup_loggedin') ?></p>
+        <?php endif ?>
+    </div>
+</div>
+<script type="text/javascript">
+    $('#agree-label label').html($('#agree-label label').html().replace('<?php echo $this->translate->_('signup_terms') ?>',
+        '<a href="<?php echo $this->url(['controller' => 'about', 'action' => 'terms']) ?>" target="_blank">' +
+        '<?php echo $this->translate->_('signup_terms') ?></a>'));
+    $('#agree-label label').html($('#agree-label label').html().replace('<?php echo $this->translate->_('signup_dataprivacy') ?>',
+        '<a href="<?php echo $this->url(['controller' => 'about', 'action' => 'dataprivacy']) ?>" target="_blank">' +
+        '<?php echo $this->translate->_('signup_dataprivacy') ?></a>'));
+</script>

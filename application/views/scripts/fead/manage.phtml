@@ -1,0 +1,85 @@
+<?php
+$title = $this->translate->_('manage_feads');
+$this->headTitle()->append($title);
+?>
+
+<div class="grid-100 tablet-grid-100 mobile-grid-100">
+    <ul class="noList">
+    <?php
+    $index = 0;
+    foreach ($this->feads as $fead):
+        if ($index !== $fead->getFolder()):
+            $index = $fead->getFolder();
+            for ($f = 0; $f < sizeof($this->folders); $f++)
+            {
+                if (!$this->folders[$f])
+                {
+                    continue;
+                }
+                if ($this->folders[$f]->getId() === $index)
+                {
+                    $folder = $this->folders[$f];
+                    $folderIndex = $f;
+                    break;
+                }
+            } ?>
+            <li data-id="<?php echo $folder->getId() ?>" data-type="folder">
+                <br>
+                <p>
+                    <a href="<?php echo $this->url(['controller' => 'fead', 'action' => 'renamefolder',
+                        'id' => $folder->getId()]) ?>" class="pointer" title="<?php echo $this->translate->_('rename') ?>">
+                        <span class="icon-pencil"></span>
+                    </a>
+                    <a class="pointer" title="<?php echo $this->translate->_('delete') ?>" onclick="deleteFolder(<?php echo $folder->getId() ?>, '<?php echo $this->translate->_('folder_delete_msg') . ' ' . $folder->getTitle() ?>')">
+                        <span class="icon-trash"></span>
+                    </a>
+                    <b>
+                        <span class="icon-folder-close-alt"></span>
+                        <?php echo $folder->getTitle() ?>
+                    </b>
+                </p>
+            </li>
+            <?php $this->folders[$folderIndex] = null ?>
+        <?php endif ?>
+
+        <li data-id="<?php echo $fead->getId() ?>">
+            <p>
+                <a href="<?php echo $this->url(['controller' => 'fead', 'action' => 'rename',
+                    'id' => $fead->getId()]) ?>" class="pointer" title="rename">
+                    <span class="icon-pencil"></span>
+                </a>
+                <a class="pointer" title="delete" onclick="deleteFead(<?php echo $fead->getId() ?>, '<?php echo $this->translate->_('fead_delete_msg') . ' ' . $fead->getTitle() ?>')">
+                    <span class="icon-trash"></span>
+                </a>
+                <?php echo $fead->getTitle() ?>
+            </p>
+        </li>
+    <?php endforeach ?>
+
+    <?php foreach ($this->folders as $folder):
+        if (null !== $folder): ?>
+        <li data-id="<?php echo $folder->getId() ?>" data-type="folder">
+            <br>
+            <p>
+                <a href="<?php echo $this->url(['controller' => 'fead', 'action' => 'renamefolder',
+                    'id' => $folder->getId()]) ?>" class="pointer" title="<?php echo $this->translate->_('rename') ?>">
+                    <span class="icon-pencil"></span>
+                </a>
+                <a class="pointer" title="<?php echo $this->translate->_('delete') ?>" onclick="deleteFolder(<?php echo $folder->getId() ?>, '<?php echo $this->translate->_('folder_delete_msg') . ' ' . $folder->getTitle() ?>')">
+                    <span class="icon-trash"></span>
+                </a>
+                <b>
+                    <span class="icon-folder-close-alt"></span>
+                    <?php echo $folder->getTitle() ?>
+                </b>
+            </p>
+        </li>
+        <?php endif ?>
+    <?php endforeach ?>
+    </ul>
+    <a href="<?php echo $this->url(['controller' => 'fead', 'action' => 'folder']) ?>" class="button"><?php echo $this->translate->_('create_folder') ?></a>
+</div>
+
+<script type="text/javascript">
+    setTitle('<?php echo $this->escape($title) ?>');
+</script>

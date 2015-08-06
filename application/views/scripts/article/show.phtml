@@ -1,0 +1,100 @@
+<div
+    class="grid-70 prefix-15 suffix-15 tablet-grid-70 tablet-prefix-15 tablet-suffix-15 mobile-grid-100 grid-parent block show">
+    <h2>
+        <a href="<?php echo $this->article->getUrl() ?>" target="_blank">
+            <?php echo $this->article->getTitle() ?>
+        </a>
+    </h2>
+
+    <p>
+        <?php echo $this->fead->getTitle() ?> - <span class="icon-time"></span><span class="detailTime"></span>
+        <?php /*
+        <br>
+        <a onclick="addTag(<?php echo $this->article->getId() ?>)" class="pointer">
+            <span class="icon-tag"></span>
+        </a>
+        Tags:
+        */
+        ?>
+    </p>
+
+    <?php //Application_Service_Session::getInstance()->addAdCount();
+    if (false): //5 <= Application_Service_Session::getInstance()->getAdCount()) :
+        Application_Service_Session::getInstance()->clearAdCount(); ?>
+        <div class="center">
+            <div class="ad">
+                <?php
+                echo Application_Model_AdvertisementRepository::getInstance()->getAdForFead($this->article->getFeadId())['code']
+                ?>
+                <p class="grid-100 tablet-grid-100 mobile-grid-100 adFooter"><?php echo $this->translate->_('ad_footer') ?></p>
+            </div>
+        </div>
+    <?php endif ?>
+
+    <div id="detail">
+        <?php echo $this->article->getContent() ?>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="border-end"></div>
+    <ul class="noList meta">
+        <li class="link">
+            <a href="<?php echo $this->article->getUrl() ?>" target="_blank" class="button">
+                <span class="icon-external-link"></span>
+
+                <p class="hide-on-mobile"><?php echo $this->translate->_('detail_link') ?></p>
+            </a>
+        </li>
+        <li class="unread">
+            <a onclick="unread(<?php echo $this->article->getId() ?>)" class="button pointer">
+                <span class="icon-circle-blank"></span>
+
+                <p class="hide-on-mobile"><?php echo $this->translate->_('detail_read') ?></p>
+            </a>
+        </li>
+        <li class="fav">
+            <a onclick="favorite(<?php echo $this->article->getId() ?>)" class="button pointer">
+                <?php if ($this->article->getFavorite()): ?>
+                    <span class="icon-star"></span>
+                    <p class="hide-on-mobile"><?php echo $this->translate->_('detail_favorite_yes') ?></p>
+                <?php else: ?>
+                    <span class="icon-star-empty"></span>
+                    <p class="hide-on-mobile"><?php echo $this->translate->_('detail_favorite_no') ?></p>
+                <?php endif ?>
+            </a>
+        </li>
+        <li class="share">
+            <a onclick="expandShare()" class="button pointer">
+                <span class="icon-share-alt"></span>
+
+                <p class="hide-on-mobile"><?php echo $this->translate->_('share_short') ?></p>
+            </a>
+            <ul class="noList hidden">
+                <li>
+                    <a href="/share/social/id/<?php echo $this->article->getId() ?>/type/facebook" target="_blank"
+                       class="button pointer" title="Facebook">
+                        <span class="icon-facebook"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/share/social/id/<?php echo $this->article->getId() ?>/type/twitter" target="_blank"
+                       class="button pointer" title="Twitter">
+                        <span class="icon-twitter"></span>
+                    </a>
+                </li>
+                <li>
+                    <a onclick="sendShortMail(<?php echo $this->article->getId() ?>)" class="button pointer"
+                        title="<?php echo $this->translate->_('share_email') ?>">
+                        <span class="icon-envelope-alt"></span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+    </ul>
+    <div class="clearfix"></div>
+</div>
+
+<script type="text/javascript">
+    $('#detail a').attr('target', '_blank');
+</script>

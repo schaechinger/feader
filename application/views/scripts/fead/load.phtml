@@ -1,0 +1,39 @@
+<?php
+
+if (0 === sizeof($this->articles))
+{
+    return;
+}
+
+$articles = [];
+
+foreach ($this->articles as $article)
+{
+    $unread = $article->getUnread() ? ' unread' : '';
+    $title = ($this->displayFeadTitle) ? '<div class="grid-15 tablet-grid-15 hide-on-mobile fead"><a href="/home/fead/id/' . $article->getFeadId() . '">' .
+                $article->getFeadTitle() . '</a></div>' : '';
+    $date = new Zend_Date($article->getDate());
+    $date->addHour(-intval($date->get(Zend_Date::GMT_DIFF)) / 100);
+    $favorite = ($article->getFavorite()) ? 'icon-star' : 'icon-star-empty';
+
+    array_push($articles, ['id' => $article->getId(),
+                           'timestamp' => $date->get(Zend_Date::TIMESTAMP),
+                           'content' =>
+                                   '<div class="article ' . $article->getId() . '">' . $title .
+                                   '    <div class="time" data-time="' . $date->get(Zend_Date::TIMESTAMP) . '"></div>
+                                        <div class="title">
+                                            <div class="preview">
+		                                        <span class="favorite pointer ' . $favorite . '"
+		                                                onclick="favorite(' . $article->getId() . ')"></span>
+                                                <p class="link' . $unread . '"
+                                                        onclick="expand(' . $article->getId() . ', ' . $article->getFeadId() . ')">' .
+                                                    $article->getTitle() .
+                                               '</p> ' . $article->getPreview() . '
+                                            </div>
+                                        </div>
+                                        <div id="' . $article->getId() . '" class="content"></div>
+                                        <div class="clearfix"></div>
+                                    </div>']);
+}
+
+echo json_encode($articles);

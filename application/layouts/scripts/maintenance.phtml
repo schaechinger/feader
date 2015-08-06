@@ -1,0 +1,100 @@
+<?php
+$color = $this->color;
+if (null === $color) {
+    $color = 'blue';
+}
+$translate = Application_Service_Language::getInstance();
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+    <meta name="author" content="Manuel Schächinger">
+    <meta name="keywords" content="feader, feed, reader, rss, atom, rdf">
+    <meta name="description" content="<?php echo $translate->_('header_description') ?>">
+    <?php echo $this->headTitle() ?>
+    <!-- favicons -->
+    <link rel="icon" href="/img/<?php echo $color ?>/icon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/img/<?php echo $color ?>/icon.ico" type="image/x-icon">
+    <!-- app icons for ios and android -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/img/app-<?php echo $color ?>-57.png">
+    <link rel="apple-touch-icon-precomposed" sizes="74x74" href="/img/app-<?php echo $color ?>-74.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/app-<?php echo $color ?>-114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/app-<?php echo $color ?>-144.png">
+    <!-- app icon for windows 8 -->
+    <meta name="application-name" content="feader">
+    <meta name="msapplication-TileImage" content="/img/app-<?php echo $color ?>-144.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <!-- styles -->
+    <link href="/css/style.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="/css/<?php echo $color ?>/style.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="/css/unsemantic.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" media="screen" rel="stylesheet" type="text/css">
+    <!-- scripts -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+
+<div id="wrapper" class="entrance">
+    <div id="container">
+        <div class="grid-parent">
+            <?php echo $this->layout()->content ?>
+        </div>
+    </div>
+    <br>
+
+    <footer class="hide-on-mobile">
+        <div class="center">
+            &copy; <?php echo date('Y') ?> feader - <?php echo $translate->_('all_rights_reserved') ?>
+        </div>
+    </footer>
+
+    <div class="hide-on-desktop hide-on-tablet mobile-grid-100 mobileFooter center">
+        <br>
+        <hr>
+        <br>
+        &copy; <?php echo date('Y') ?> feader - <?php echo $translate->_('all_rights_reserved') ?>
+    </div>
+</div>
+
+<script type="text/javascript">
+    <?php
+    $siteId = 0;
+    if ('feader.eu' === $_SERVER['HTTP_HOST'] || 'www.feader.eu' === $_SERVER['HTTP_HOST'])
+    {
+        $siteId = 1;
+    }
+    else
+    {
+        $siteId = 2;
+    }
+    ?>
+    var _paq = _paq || [];
+    _paq.push(["trackPageView"]);
+    _paq.push(["enableLinkTracking"]);
+
+    $(function () {
+        var u = "https://www.feader.eu/feadlytics/";
+        _paq.push(["setTrackerUrl", u + "piwik.php"]);
+        _paq.push(["setSiteId", "<?php echo $siteId ?>"]);
+        var d = document, g = d.createElement("script"), s = d.getElementsByTagName("script")[0];
+        g.type = "text/javascript";
+        g.defer = true;
+        g.async = true;
+        g.src = u + "piwik.js";
+        s.parentNode.insertBefore(g, s);
+    });
+
+    $(function () {
+        $('#email').attr('type', 'email');
+        $(document).ready(function () {
+            $('.firstFocus').focus();
+        });
+    })
+</script>
+<noscript><p><img src="https://www.feader.eu/feadlytics/piwik.php?idsite=<?php echo $siteId ?>" style="border:0" alt="" /></p></noscript>
+
+</body>
+</html>

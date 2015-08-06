@@ -1,0 +1,34 @@
+body, #detail, input, textarea
+{
+    color: #fff;
+}
+
+body, .headline, .sidebar, .box h2
+{
+    background-color: #222;
+}
+
+input, textarea
+{
+    background-color: #333;
+}
+
+.article
+{
+    border-color: #444;
+}
+
+.border-end
+{
+    border-color: #ddd;
+}
+
+#menu a:hover, #menuFead li:hover > p, #menuFead ul span
+{
+    color: #222;
+}
+
+hr
+{
+    border-color: #444;
+}

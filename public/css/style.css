@@ -1,0 +1,809 @@
+/* +---------------------------+
+ * | style.css                 |
+ * | Copyright (c) 2013 feader |
+ * +---------------------------+
+ */
+
+body {
+    font: 0.8em verdana;
+    margin: 0;
+    overflow-y: scroll
+}
+
+a {
+    text-decoration: none
+}
+
+p {
+    font-size: 1em
+}
+
+h1 {
+    font-size: 2em;
+    margin: 0;
+    padding: 0.5em 0.8em;
+}
+
+h2 {
+    font-size: 1.2em;
+    padding: 0.5em
+}
+
+h3 {
+    font-size: 1em;
+    padding: 0.5em 2em
+}
+
+hr {
+    text-indent: 0;
+    text-shadow: none;
+    text-transform: none
+}
+
+.left {
+    text-align: left
+}
+
+.center, .middle, .features p.center {
+    text-align: center
+}
+
+.middle {
+    display: inline;
+    vertical-align: middle
+}
+
+.right {
+    text-align: right
+}
+
+.noList {
+    list-style: none;
+    padding: 0
+}
+
+.noList span {
+    padding: 0 1em 0 0;
+}
+
+.box {
+    margin: 2em 0 0 0;
+    padding: 0.625em
+}
+
+.box, .box h2 {
+    border: 1px solid #000
+}
+
+.headline {
+    background-color: #fff;
+    border: 0 solid #000;
+    border-bottom-width: 1px;
+    height: 4em;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 500;
+}
+
+.headline > * {
+    vertical-align: middle
+}
+
+.entrance .headline .floatRight a, .entrance .mobileFooter a, .entrance footer a {
+    margin: 1.3em 1em;
+}
+
+.menuFooter a {
+    margin: 0 2em 0 0;
+}
+
+.entrance .headline .floatRight a {
+    display: inline-block;
+}
+
+.entrance .headline .floatRight a.button {
+    margin: 0.8em 0;
+    width: auto;
+}
+
+.entrance h1 {
+    word-wrap: break-word;
+}
+
+.headline h1 {
+    overflow: hidden;
+    white-space: nowrap
+}
+
+.floatLeft {
+    float: left;
+}
+
+.floatRight {
+    float: right;
+}
+
+.logo {
+    height: 3em;
+    padding: 0.5em 0;
+    text-align: center;
+}
+
+.entrance .logo {
+    text-align: left;
+}
+
+.logo-large {
+    display: block;
+    padding: 2em 0 1em 0;
+    text-align: center
+}
+
+.logo-large img, .logo img {
+    border-style: none;
+    height: auto;
+}
+
+.logo-large img {
+    width: 40em
+}
+
+.logo img {
+    height: auto;
+    max-width: 9em;
+}
+
+.entrance {
+    background-size: 10em
+}
+
+.beta {
+    float: right;
+    position: absolute;
+    max-width: 15%;
+    right: 0;
+    top: 4em;
+    width: 8em;
+}
+
+.beta img {
+    height: auto;
+    width: 100%
+}
+
+footer, .footer {
+    font-size: 0.8em
+}
+
+footer {
+    background: #fff;
+    bottom: 0;
+    left: 0;
+    opacity: 0.8;
+    padding: 0.5em;
+    position: fixed;
+    right: 0
+}
+
+footer p {
+    margin: 1px
+}
+
+input, .zend_form textarea {
+    border: 1px solid #000;
+    border-radius: 0;
+    height: 2em;
+    margin: 0.5em 0 1em 0;
+    padding: 2%;
+    text-indent: 0;
+    text-shadow: none;
+    text-transform: none;
+    -webkit-appearance: none;
+    width: 96%
+}
+
+.zend_form textarea {
+    height: 10em
+}
+
+.zend_form input.checkbox {
+    -webkit-appearance: checkbox
+}
+
+input:focus, .zend_form textarea:focus {
+    border: 1px solid #000;
+    outline: none
+}
+
+.zend_form label {
+    text-align: left;
+    width: 100%
+}
+
+.pointer, p.link {
+    cursor: pointer
+}
+
+#submit, input.button, a.button {
+    border: 1px solid #000;
+    margin: 0;
+    text-align: center;
+    width: 100%
+}
+
+#submit, input.button, a.fill {
+    height: 3.5em
+}
+
+a.button {
+    padding: 0.5em 1em
+}
+
+a.button.bigger {
+    font-size: 1.2em;
+}
+
+.zend_form dd, .zend_form dt {
+    margin: 0;
+    padding: 0
+}
+
+.zend_form dd .errors {
+    margin: 0 1em 1em 1em;
+    padding: 0 1em;
+    font-size: 0.8em
+}
+
+#agree-element input, #agreenotify-element input {
+    float: left;
+    width: 10%
+}
+
+#agree-label, #agreenotify-label {
+    float: right;
+    padding-bottom: 0.5em;
+    width: 90%;
+    clear: both
+}
+
+.box h2 {
+    background-color: #fff;
+    float: left;
+    margin: -1.2em 0 0.625em 0.5em;
+    padding: 0.25em 0.625em
+}
+
+.box h3 {
+    margin: 0.5em 0 0.25em 0;
+    padding: 0
+}
+
+.hidden {
+    display: none;
+    margin: 0
+}
+
+.sidebar {
+    background-color: #fff;
+    border: 0 solid #000;
+    border-right-width: 1px;
+    bottom: 0;
+    left: 0;
+    overflow-y: scroll;
+    position: fixed;
+    text-overflow: clip;
+    top: 4em;
+    z-index: 100
+}
+
+#menu, #menu .feadTitle {
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+#menu {
+    padding: 0 0 0.5em 0
+}
+
+#menu .selected {
+    font-weight: bold
+}
+
+#menu ul {
+    padding: 1em 0 0 0
+}
+
+#menu ul ul {
+    padding: 0.625em 0 0 0.5em;
+}
+
+#menu ul, #menu ul ul {
+    list-style: none;
+    margin: 0
+}
+
+#menuFead li ul {
+    padding: 0 0 0 1.5em;
+}
+
+#menu li {
+    margin: 0;
+    padding: 0.5em 0
+}
+
+#menuFead li {
+    padding: 0
+}
+
+#menuFead a {
+    padding: 0.5em;
+}
+
+#menu .active {
+    background-color: #e0e0e0;
+    border-radius: 0.5em;
+    font-weight: bold
+}
+
+#menu span {
+    display: inline-block;
+    width: 1.2em
+}
+
+#menuFead .element span {
+    padding: 0 0.5em 0 0;
+}
+
+#menuFead ul {
+    margin: 0 0 0 1em;
+}
+
+#menu a {
+    padding: 0.5em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%
+}
+
+#menu .exp {
+    cursor: pointer
+}
+
+#menu .folder {
+    padding-top: 0.5em;
+}
+
+#menuFead p.feadTitle a {
+    padding-left: 0;
+    width: 100%;
+}
+
+#menu .folderExpander {
+    float: left;
+}
+
+#menu .unread {
+    float: right;
+    font-size: 1em;
+    font-weight: normal;
+    margin: 0;
+    padding: 0.5em;
+    text-align: right
+}
+
+#menu .feadTitle {
+    float: left;
+    margin: 0;
+}
+
+#addFead {
+    padding: 0.5em 0;
+}
+
+#addFead .rss,
+#addFead .atom {
+    padding: 0.5em 0;
+}
+
+#addFead .atom {
+    font-weight: bold;
+}
+
+#menu h2 a:hover,
+#menu #addFead a:hover {
+    background-color: #fff;
+}
+
+#menu h2 {
+    margin: 1em 0 0 0;
+    padding: 0;
+}
+
+#menu h2 span {
+    display: none;
+}
+
+.sortable {
+    list-style: none;
+    padding: 0
+}
+
+.rightNav {
+    color: #fff;
+    list-style: none;
+    margin: 0.5em 1em 0 1em
+}
+
+.rightNav li {
+    border: 1px solid #000;
+    border-bottom-width: 0;
+    cursor: pointer;
+    float: left;
+    margin: 0 0.5em;
+    padding: 0.25em
+}
+
+.rightNav li img {
+    height: 1.5em;
+    width: 1.5em
+}
+
+.big {
+    font-size: 2em;
+    padding: 0.5em;
+    text-align: center
+}
+
+.footer .big {
+    font-size: 1.2em;
+    margin: 0.5em;
+    padding: 0
+}
+
+.large {
+    font-size: 6em;
+}
+
+.huge {
+    font-size: 10em
+}
+
+#articles {
+    margin: 0 0 1em 0
+}
+
+.article {
+    border: 0 solid #f0f0f0;
+    border-top-width: 1px
+}
+
+.article p.link {
+    display: inline
+}
+
+.article .title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.article .title h1 {
+    padding: 0.25em 0.5em 0;
+    text-align: left;
+}
+
+.article .title, .article .fead, .article .time {
+    margin: 0.75em 0
+}
+
+.article .fead {
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.article .time {
+    float: right;
+    margin-left: 1em
+}
+
+.article .title, .article .fead a, .article .time, .article .content p, .adFooter {
+    color: #aaa;
+    padding: 0 0.5em
+}
+
+.article span {
+    padding: 0 0.5em 0 0
+}
+
+.article .content .show {
+    padding: 0 0.5em 1em 0.5em
+}
+
+.article .content p, .article .content h2, #title {
+    padding-left: 0;
+    padding-right: 0
+}
+
+.article .title img, #menu img, #menu .blank {
+    height: 1em;
+    vertical-align: middle;
+    width: auto
+}
+
+.article .content {
+    display: none;
+    padding: 0;
+    text-overflow: clip;
+    white-space: normal
+}
+
+.article .content.share {
+    display: block;
+}
+
+.article .content h2 {
+    margin-top: 0
+}
+
+.meta {
+    padding: 0.5em 0 0 0
+}
+
+.meta li,
+.meta ul,
+.meta .button,
+.meta .button p,
+.meta .button span {
+    float: left;
+    width: auto;
+}
+
+.meta li {
+    margin: 0 0 0.5em 0;
+}
+
+.meta ul li {
+    height: 100%;
+    margin: 0;
+}
+
+.meta .button p {
+    margin: 0;
+    padding: 0 0 0 0.5em;
+}
+
+.meta .button p,
+.meta .button span {
+    color: #fff;
+}
+
+.meta .button span {
+    font-size: 1.2em;
+    padding: 0;
+}
+
+.meta input {
+    margin: 0 0 0 0.5em;
+}
+
+/*
+.meta li:hover > ul {
+    display: block;
+}
+*/
+
+.unread {
+    font-weight: bold
+}
+
+.meta .unread {
+    font-weight: normal
+}
+
+#detail iframe {
+    max-width: 100%
+}
+
+#detail img, .ad img {
+    height: auto;
+    max-width: 100%;
+}
+
+#detail, #detail p {
+    color: #000;
+    cursor: default
+}
+
+#detail img, #detail iframe {
+    margin-left: auto;
+    margin-right: auto
+}
+
+#loading {
+    height: auto;
+    margin: 1em 0;
+    width: 1.5em
+}
+
+.border-h {
+    border: 0 solid #000;
+    border-bottom-width: 1px;
+    margin: 0 0 1em 0;
+    padding: 0 0 0.5em 0;
+    white-space: normal
+}
+
+.features p, .block {
+    text-align: justify
+}
+
+.tag {
+    padding: 0.5em
+}
+
+.border-end {
+    border: 0 solid #000;
+    border-bottom-width: 1px;
+    margin: 0.5em 0;
+    width: 5em
+}
+
+.features {
+    margin: 0 0 2.5em 0
+}
+
+.features .large {
+    padding: 0;
+}
+
+.feature {
+    margin-bottom: 1.5em;
+}
+
+.features h2 {
+    margin-bottom: 0;
+    text-align: left;
+}
+
+.features h2 span {
+    display: inline-block;
+    font-size: 1.5em;
+    text-align: left;
+    width: 2em;
+}
+
+.features ul {
+    padding-left: 5.5em;
+}
+
+.features .leftAlign, .features .leftAlign h2 {
+    text-align: left
+}
+
+.features .rightAlign, .features .rightAlign h2 {
+    text-align: right
+}
+
+.features .main h2 {
+    text-align: center;
+}
+
+.features .main img {
+    height: auto;
+    width: 100%;
+}
+
+.horList div {
+    float: left;
+    height: 1.5em;
+    margin: 0.5em;
+    width: 1.5em
+}
+
+.grow {
+    height: auto;
+    padding: 0.5em;
+    width: 1.5em
+}
+
+.grow:hover {
+    padding: 0.25em;
+    width: 2em
+}
+
+#mobileBanner {
+    top: 0;
+    left: 0;
+    position: absolute
+}
+
+#container {
+    margin-top: 4em;
+}
+
+#submit-label, #csrf-label {
+    height: 0;
+}
+
+.ad {
+    border: 1px solid #000;
+    display: inline-block;
+    margin: 0 0 1em 0;
+    padding: 0.5em;
+}
+
+.ad img {
+    display: inline-block !important;
+}
+
+.adFooter {
+    margin: 0;
+    padding: 0.5em 0 0 0 !important;
+    text-align: left;
+}
+
+.segment {
+    border: 1px solid #000;
+    margin: 3em 0 0.5em 0;
+    padding: 0.5em 0;
+}
+
+.segment a {
+    padding: 0.5em;
+}
+
+.post {
+    margin-bottom: 3em;
+}
+
+.about h2, .about h3, .post h2 {
+    text-align: left;
+}
+
+.about h2, .post h2 {
+    font-size: 1.5em;
+    margin: 1em 0 0 0;
+    padding: 0;
+    word-break: break-all;
+}
+
+.about h3 {
+    margin: 1em 0 0.5em 0;
+    padding: 0;
+}
+
+.post p.head {
+    color: #aaa;
+    padding: 0;
+}
+
+.about h3, .about p, .post p, .post p.head {
+    padding: 0 1.5em;
+}
+
+.about p.full, .post p.full {
+    padding-left: 0;
+}
+
+.slide {
+    display: none;
+    height: auto;
+    margin: 0 auto;
+    max-width: 100%;
+    padding: 0;
+    width: 950px;
+}
+
+.slide img.full {
+    height: auto;
+    width: 100%;
+}
+
+a#webimporter {
+    border-radius: 0.5em;
+    cursor: move;
+}

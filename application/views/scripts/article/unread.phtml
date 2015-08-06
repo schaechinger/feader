@@ -1,0 +1,9 @@
+<a onclick="unread(<?php echo $this->article->getArticleId() ?>)" class="button pointer">
+    <?php if ($this->article->isUnread()): ?>
+        <span class="icon-circle"></span>
+        <p class="hide-on-mobile"><?php echo $this->translate->_('detail_unread') ?></p>
+    <?php else: ?>
+        <span class="icon-circle-blank"></span>
+        <p class="hide-on-mobile"><?php echo $this->translate->_('detail_read') ?></p>
+    <?php endif ?>
+</a>

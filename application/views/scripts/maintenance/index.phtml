@@ -1,0 +1,19 @@
+<?php
+$title = $this->translate->_('maintenance_title');
+$this->headTitle()->append($title);
+$color = Application_Service_Session::getInstance()->getColor();
+if (!$color || '' === $color)
+{
+    $color = 'blue';
+}
+?>
+
+<div class="grid-container">
+    <div class="center">
+        <div class="logo-large">
+            <img src="/img/<?php echo $color ?>/logo.png" alt="feader">
+        </div>
+        <h1></span>&nbsp;<?php echo $title ?></h1>
+        <p><?php echo $this->translate->_('maintenance_label') ?></p>
+    </div>
+</div>

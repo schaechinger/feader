@@ -1,0 +1,151 @@
+<?php
+$color = $this->color;
+if (null === $color) {
+    $color = 'blue';
+}
+$translate = Application_Service_Language::getInstance();
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+    <meta name="author" content="Manuel Schächinger">
+    <meta name="keywords" content="feader, feed, reader, rss, atom, rdf">
+    <meta name="description" content="<?php echo $translate->_('header_description') ?>">
+    <?php echo $this->headTitle() ?>
+    <!-- favicons -->
+    <link rel="icon" href="/img/<?php echo $color ?>/icon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/img/<?php echo $color ?>/icon.ico" type="image/x-icon">
+    <!-- app icons for ios and android -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/img/<?php echo $color ?>/app-57.png">
+    <link rel="apple-touch-icon-precomposed" sizes="74x74" href="/img/<?php echo $color ?>/app-74.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/<?php echo $color ?>/app-114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/<?php echo $color ?>/app-144.png">
+    <!-- app icon for windows 8 -->
+    <meta name="application-name" content="feader">
+    <meta name="msapplication-TileImage" content="/img/<?php echo $color ?>/app-144.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <!-- styles -->
+    <link href="/css/style.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="/css/<?php echo $color ?>/style.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="/css/unsemantic.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" media="screen" rel="stylesheet" type="text/css">
+    <!-- scripts -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+
+<div id="wrapper" class="entrance">
+    <header class="grid-100 tablet-grid-100 mobile-grid-100 grid-parent headline center">
+        <div class="grid-container">
+            <div class="logo floatLeft">
+                <a href="<?php echo $this->url(['controller' => 'index'], null, true) ?>">
+                    <img src="/img/<?php echo $color ?>/logo-small-icon.png" alt="feader">
+                </a>
+            </div>
+            <?php if (is_null(Application_Service_Session::getInstance()->getSessionId())): ?>
+                <div class="floatRight">
+                    <span class="hide-on-mobile">
+                        <a href="/blog"><?php echo $translate->_('blog') ?></a>
+                        <a href="/user/signup"><?php echo $translate->_('signup') ?></a>
+                    </span>
+                    <a href="/user/login" class="button"><?php echo $translate->_('login') ?></a>
+                </div>
+            <?php else: ?>
+                <div class="floatRight">
+                    <span class="hide-on-mobile">
+                        <a href="/blog"><?php echo $translate->_('blog') ?></a>
+                    </span>
+                    <a href="/home/fead"><?php echo $translate->_('my_feads') ?></a>
+                </div>
+            <?php endif ?>
+        </div>
+        <div class="clearfix"></div>
+    </header>
+
+    <div id="container">
+        <div class="grid-parent">
+            <?php echo $this->layout()->content ?>
+        </div>
+    </div>
+    <br>
+
+    <footer class="hide-on-mobile">
+        <div class="center">
+            &copy; <?php echo date('Y') ?> feader - <?php echo $translate->_('all_rights_reserved') ?>
+            <a href="<?php echo $this->url(['controller' => 'about'], null, true) ?>">
+                <?php echo $translate->_('about_us') ?>
+            </a>
+            <a href="<?php echo $this->url(['controller' => 'about', 'action' => 'imprint'], null, true) ?>">
+                <?php echo $translate->_('imprint') ?>
+            </a>
+            <a href="<?php echo $this->url(['controller' => 'about', 'action' => 'dataprivacy'], null, true) ?>">
+                <?php echo $translate->_('data_privacy') ?>
+            </a>
+        </div>
+    </footer>
+
+    <div class="hide-on-desktop hide-on-tablet mobile-grid-100 mobileFooter center">
+        <br>
+        <hr>
+        <br>
+        <a href="<?php echo $this->url(['controller' => 'user', 'action' => 'signup'], null, true) ?>">
+            <?php echo $translate->_('signup') ?>
+        </a>
+        <a href="<?php echo $this->url(['controller' => 'blog'], null, true) ?>">
+            <?php echo $translate->_('blog') ?>
+        </a>
+        <a href="<?php echo $this->url(['controller' => 'about'], null, true) ?>">
+            <?php echo $translate->_('about_us') ?>
+        </a>
+        <a href="<?php echo $this->url(['controller' => 'about', 'action' => 'imprint'], null, true) ?>">
+            <?php echo $translate->_('imprint') ?>
+        </a>
+        <a href="<?php echo $this->url(['controller' => 'about', 'action' => 'dataprivacy'], null, true) ?>">
+            <?php echo $translate->_('data_privacy') ?>
+        </a>
+        <br>&copy; <?php echo date('Y') ?> feader - <?php echo $translate->_('all_rights_reserved') ?>
+    </div>
+</div>
+
+<script type="text/javascript">
+    <?php
+    $siteId = 0;
+    if ('feader.eu' === $_SERVER['HTTP_HOST'] || 'www.feader.eu' === $_SERVER['HTTP_HOST'])
+    {
+        $siteId = 1;
+    }
+    else
+    {
+        $siteId = 2;
+    }
+    ?>
+    var _paq = _paq || [];
+    _paq.push(["trackPageView"]);
+    _paq.push(["enableLinkTracking"]);
+
+    $(function () {
+        var u = "https://www.feader.eu/feadlytics/";
+        _paq.push(["setTrackerUrl", u + "piwik.php"]);
+        _paq.push(["setSiteId", "<?php echo $siteId ?>"]);
+        var d = document, g = d.createElement("script"), s = d.getElementsByTagName("script")[0];
+        g.type = "text/javascript";
+        g.defer = true;
+        g.async = true;
+        g.src = u + "piwik.js";
+        s.parentNode.insertBefore(g, s);
+    });
+
+    $(function () {
+        $('#email').attr('type', 'email');
+        $(document).ready(function () {
+            $('.firstFocus').focus();
+        });
+    })
+</script>
+<noscript><p><img src="https://www.feader.eu/feadlytics/piwik.php?idsite=<?php echo $siteId ?>" style="border:0" alt="" /></p></noscript>
+
+</body>
+</html>
