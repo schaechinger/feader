@@ -1,4 +1,4 @@
-![feader - read your feads](http://www.schaechinger.com/img/feader-logo.png)
+![feader - read your feads](http://static.schaechinger.com/img/feader-logo.png)
 
 ## Introduction
 
